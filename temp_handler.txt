@@ -1,0 +1,39 @@
+    // Handle question completion - HARDCODED 3-QUESTION FLOW
+    const handleQuestionComplete = (result) => {
+        const newResults = [...results, result];
+        setResults(newResults);
+
+        // HARDCODED: Level 3 has exactly 3 questions (index 0, 1, 2)
+        // NO early completion, NO conditional logic
+        
+        if (currentQuestionIndex === 0) {
+            // After Q1 -> go to Q2
+            try {
+                sessionStorage.setItem('level3_progress', JSON.stringify({
+                    currentQuestionIndex: 1,
+                    results: newResults
+                }));
+            } catch (e) {}
+            setTimeout(() => setCurrentQuestionIndex(1), 1500);
+            return; // STOP HERE
+            
+        } else if (currentQuestionIndex === 1) {
+            // After Q2 -> go to Q3
+            try {
+                sessionStorage.setItem('level3_progress', JSON.stringify({
+                    currentQuestionIndex: 2,
+                    results: newResults
+                }));
+            } catch (e) {}
+            setTimeout(() => setCurrentQuestionIndex(2), 1500);
+            return; // STOP HERE
+            
+        } else {
+            // After Q3 -> finalize level
+            try {
+                sessionStorage.removeItem('level3_progress');
+            } catch (e) {}
+            setIsComplete(true);
+            processLevelCompletion(newResults);
+        }
+    };

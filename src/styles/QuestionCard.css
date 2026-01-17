@@ -1,0 +1,544 @@
+/**
+ * Question Card Styles
+ * 3D card effect with perspective
+ */
+
+.question-card {
+    perspective: 1000px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.question-card-inner {
+    background: linear-gradient(135deg, rgba(26, 26, 26, 0.95), rgba(42, 42, 42, 0.95));
+    border: 2px solid #ff0000;
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.5),
+        0 0 20px rgba(255, 0, 0, 0.2),
+        inset 0 0 40px rgba(255, 0, 0, 0.05);
+    transform-style: preserve-3d;
+    transition: transform 0.3s ease;
+}
+
+.question-card:hover .question-card-inner {
+    transform: translateY(-5px);
+}
+
+.question-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+    gap: 2rem;
+}
+
+.question-number {
+    font-size: 0.9rem;
+    color: #ff6666;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.question-content {
+    margin-bottom: 2rem;
+}
+
+.question-text {
+    font-size: 1.4rem;
+    color: #ffffff;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.question-options {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.option-button {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.2rem;
+    background: rgba(0, 0, 0, 0.4);
+    border: 2px solid #333333;
+    border-radius: 8px;
+    color: #ffffff;
+    font-size: 1rem;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.option-button:hover:not(.disabled) {
+    border-color: #ff0000;
+    background: rgba(255, 0, 0, 0.1);
+    transform: translateX(5px);
+}
+
+.option-button.selected {
+    border-color: #ff0000;
+    background: rgba(255, 0, 0, 0.2);
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.3);
+}
+
+.option-button.disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.option-letter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: #ff0000;
+    border-radius: 50%;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+.option-text {
+    flex: 1;
+}
+
+.question-input-container {
+    margin: 2rem 0;
+}
+
+.question-input {
+    width: 100%;
+    padding: 1.2rem;
+    background: rgba(0, 0, 0, 0.5);
+    border: 2px solid #ff0000;
+    border-radius: 8px;
+    color: #ffffff;
+    font-family: 'Courier New', monospace;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+}
+
+.question-input:focus {
+    outline: none;
+    border-color: #ff3333;
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.4);
+}
+
+.question-input::placeholder {
+    color: #666666;
+}
+
+/* Code Block Styles for DEBUG questions */
+.code-block-container {
+    margin: 1.5rem 0;
+    background: rgba(0, 0, 0, 0.6);
+    border: 2px solid #333333;
+    border-radius: 8px;
+    padding: 1.5rem;
+}
+
+.code-block {
+    margin: 0;
+    padding: 0;
+    font-family: 'Courier New', Consolas, Monaco, monospace;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #00ff88;
+    overflow-x: auto;
+}
+
+.code-block code {
+    display: block;
+    white-space: pre;
+    color: #00ff88;
+}
+
+/* Textarea for DEBUG/TEXT questions */
+.question-textarea {
+    min-height: 100px;
+    resize: vertical;
+    font-family: 'Courier New', Consolas, Monaco, monospace;
+    line-height: 1.5;
+}
+
+/* Riddle Input Styles */
+.riddle-input-container {
+    margin: 2rem 0;
+}
+
+.riddle-hint {
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background: rgba(0, 170, 255, 0.1);
+    border-left: 3px solid #00aaff;
+    color: #00aaff;
+    font-size: 0.95rem;
+    border-radius: 4px;
+}
+
+.riddle-boxes {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.riddle-box {
+    width: 50px;
+    height: 60px;
+    background: rgba(0, 0, 0, 0.5);
+    border: 2px solid #ff0000;
+    border-radius: 8px;
+    color: #ffffff;
+    font-family: 'Courier New', monospace;
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.riddle-box:focus {
+    outline: none;
+    border-color: #ff3333;
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.4);
+}
+
+.riddle-box.filled {
+    /* Keep neutral - no green feedback while typing */
+    background: rgba(0, 0, 0, 0.5);
+    border-color: #ff0000;
+}
+
+
+.riddle-box.disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.riddle-boxes.shake {
+    animation: shake 0.5s;
+}
+
+@keyframes shake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    10%,
+    30%,
+    50%,
+    70%,
+    90% {
+        transform: translateX(-5px);
+    }
+
+    20%,
+    40%,
+    60%,
+    80% {
+        transform: translateX(5px);
+    }
+}
+
+/* Lifeline System Styles */
+.riddle-lifelines {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin: 1rem 0;
+    font-size: 1.1rem;
+}
+
+.lifeline-label {
+    color: #ffaa00;
+    font-weight: bold;
+    margin-right: 0.5rem;
+}
+
+.lifeline-heart {
+    font-size: 1.5rem;
+}
+
+/* Feedback Message */
+.riddle-feedback-message {
+    margin: 1rem 0;
+    padding: 1rem;
+    background: rgba(255, 100, 0, 0.2);
+    border: 2px solid #ff6400;
+    border-radius: 8px;
+    color: #ffaa00;
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-align: center;
+    animation: fadeIn 0.3s;
+}
+
+
+/* Check Answer Button */
+.riddle-check-button {
+    width: 100%;
+    padding: 1rem;
+    margin-top: 1.5rem;
+    background: linear-gradient(135deg, #00aaff, #0088cc);
+    border: 2px solid #00aaff;
+    border-radius: 8px;
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.riddle-check-button:hover:not(:disabled) {
+    background: linear-gradient(135deg, #00ccff, #00aaff);
+    box-shadow: 0 0 20px rgba(0, 170, 255, 0.5);
+    transform: translateY(-2px);
+}
+
+.riddle-check-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background: #555555;
+    border-color: #666666;
+}
+
+/* Submit Answer Button */
+.riddle-submit-button {
+    width: 100%;
+    padding: 1rem;
+    margin-top: 1rem;
+    background: linear-gradient(135deg, #ff0000, #cc0000);
+    border: 2px solid #ff3333;
+    border-radius: 8px;
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.riddle-submit-button:hover:not(:disabled) {
+    background: linear-gradient(135deg, #ff3333, #ff0000);
+    box-shadow: 0 0 25px rgba(255, 0, 0, 0.6);
+    transform: translateY(-2px);
+}
+
+.riddle-submit-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background: #555555;
+    border-color: #666666;
+}
+
+/* Feedback States */
+.riddle-box.feedback-correct {
+    background: rgba(0, 255, 136, 0.3);
+    border-color: #00ff88;
+    box-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
+    animation: pulse-green 0.5s;
+}
+
+.riddle-box.feedback-incorrect {
+    background: rgba(255, 0, 0, 0.3);
+    border-color: #ff0000;
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+    animation: pulse-red 0.5s;
+}
+
+@keyframes pulse-green {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+@keyframes pulse-red {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+/* Intro Modal Styles */
+.riddle-intro-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    animation: fadeIn 0.3s;
+}
+
+.riddle-intro-modal {
+    background: linear-gradient(135deg, rgba(26, 26, 26, 0.98), rgba(42, 42, 42, 0.98));
+    border: 2px solid #00aaff;
+    border-radius: 16px;
+    padding: 2rem;
+    max-width: 500px;
+    text-align: center;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7), 0 0 30px rgba(0, 170, 255, 0.3);
+    animation: slideIn 0.3s;
+}
+
+.riddle-intro-modal h3 {
+    color: #00aaff;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+.riddle-intro-modal p {
+    color: #cccccc;
+    font-size: 1.1rem;
+    margin: 0.8rem 0;
+    line-height: 1.6;
+}
+
+.riddle-intro-modal strong {
+    color: #ffffff;
+    font-size: 1.2rem;
+}
+
+.riddle-intro-dismiss {
+    margin-top: 1.5rem;
+    padding: 0.8rem 2rem;
+    background: linear-gradient(135deg, #00aaff, #0088cc);
+    border: 2px solid #00aaff;
+    border-radius: 8px;
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.riddle-intro-dismiss:hover {
+    background: linear-gradient(135deg, #00ccff, #00aaff);
+    box-shadow: 0 0 20px rgba(0, 170, 255, 0.5);
+    transform: translateY(-2px);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+
+.submit-button {
+    width: 100%;
+    padding: 1.2rem;
+    background: linear-gradient(135deg, #ff0000, #cc0000);
+    border: 2px solid #ff3333;
+    border-radius: 8px;
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: bold;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 1.5rem;
+}
+
+.submit-button:hover:not(:disabled) {
+    background: linear-gradient(135deg, #ff3333, #ff0000);
+    box-shadow: 0 0 25px rgba(255, 0, 0, 0.6);
+    transform: translateY(-2px);
+}
+
+.submit-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.submitted-message {
+    text-align: center;
+    padding: 1.5rem;
+    background: rgba(0, 255, 136, 0.1);
+    border: 2px solid #00ff88;
+    border-radius: 8px;
+    color: #00ff88;
+    font-weight: bold;
+    margin-top: 1.5rem;
+}
+
+.question-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1.5rem;
+    border-top: 1px solid #333333;
+}
+
+.question-points {
+    color: #ffaa00;
+    font-weight: bold;
+}
+
+.question-type-badge {
+    padding: 0.4rem 0.8rem;
+    background: rgba(255, 0, 0, 0.2);
+    border: 1px solid #ff0000;
+    border-radius: 4px;
+    color: #ff6666;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+}
+
+@media (max-width: 768px) {
+    .question-card-inner {
+        padding: 1.5rem;
+    }
+
+    .question-text {
+        font-size: 1.2rem;
+    }
+
+    .question-header {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}

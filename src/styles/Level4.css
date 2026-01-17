@@ -1,0 +1,114 @@
+/* Level 4 - Scenario-Based MCQs */
+.scenario-block {
+    background: rgba(255, 0, 0, 0.05);
+    border: 2px solid rgba(255, 0, 0, 0.3);
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.scenario-title {
+    color: #ff0000;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+}
+
+.scenario-description {
+    color: #e0e0e0;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    white-space: pre-line;
+}
+
+.questions-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.question-block {
+    background: rgba(255, 0, 0, 0.05);
+    border: 2px solid rgba(255, 0, 0, 0.3);
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+.question-number {
+    color: #ff6666;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.question-text {
+    color: #ffffff;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+}
+
+.options-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.option-item {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.option-item:hover {
+    background: rgba(255, 0, 0, 0.1);
+    border-color: rgba(255, 0, 0, 0.5);
+}
+
+.option-item.selected {
+    background: rgba(255, 0, 0, 0.2);
+    border-color: #ff0000;
+}
+
+.option-item input[type="radio"] {
+    margin-right: 1rem;
+}
+
+.option-label {
+    color: #e0e0e0;
+    font-size: 1rem;
+}
+
+.submit-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.submit-button {
+    padding: 1rem 3rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #fff;
+    background: linear-gradient(135deg, #ff0000, #cc0000);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+}
+
+.submit-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(255, 0, 0, 0.8);
+}
+
+.submit-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}

@@ -1,0 +1,138 @@
+/**
+ * Timer Component Styles
+ */
+
+.timer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.timer-circle {
+    position: relative;
+    width: 120px;
+    height: 120px;
+}
+
+.timer-svg {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+}
+
+.timer-circle-bg {
+    fill: none;
+    stroke: #1a1a1a;
+    stroke-width: 8;
+}
+
+.timer-circle-progress {
+    fill: none;
+    stroke: #ff0000;
+    stroke-width: 8;
+    stroke-linecap: round;
+    transition: stroke-dashoffset 0.1s linear;
+    filter: drop-shadow(0 0 8px #ff0000);
+}
+
+.timer-container.warning .timer-circle-progress {
+    stroke: #ffaa00;
+    filter: drop-shadow(0 0 8px #ffaa00);
+    animation: pulse-warning 1s ease infinite;
+}
+
+.timer-container.critical .timer-circle-progress {
+    stroke: #ff0040;
+    filter: drop-shadow(0 0 12px #ff0040);
+    animation: pulse-critical 0.5s ease infinite;
+}
+
+.timer-container.expired .timer-circle-progress {
+    stroke: #666666;
+    filter: none;
+}
+
+@keyframes pulse-warning {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.7;
+    }
+}
+
+@keyframes pulse-critical {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.timer-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.timer-time {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.timer-container.warning .timer-time {
+    color: #ffaa00;
+}
+
+.timer-container.critical .timer-time {
+    color: #ff0040;
+    animation: blink-fast 0.5s ease infinite;
+}
+
+@keyframes blink-fast {
+
+    0%,
+    50% {
+        opacity: 1;
+    }
+
+    51%,
+    100% {
+        opacity: 0.5;
+    }
+}
+
+.timer-label {
+    font-size: 0.7rem;
+    color: #888888;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.timer-warning-text,
+.timer-expired-text {
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 0.5rem;
+}
+
+.timer-warning-text {
+    color: #ffaa00;
+    animation: pulse-warning 1s ease infinite;
+}
+
+.timer-expired-text {
+    color: #ff0040;
+}

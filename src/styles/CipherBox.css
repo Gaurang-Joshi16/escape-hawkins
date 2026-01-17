@@ -1,0 +1,56 @@
+/* Cipher Box Styles for Level 5 */
+.cipher-box {
+    background: #000000;
+    border: 2px solid #00ff88;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+}
+
+.cipher-header {
+    color: #00ff88;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.cipher-content {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.2rem;
+    color: #00ff88;
+    margin: 0;
+    padding: 1rem;
+    background: rgba(0, 255, 136, 0.05);
+    border-radius: 4px;
+    text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+    white-space: pre-wrap;
+    word-break: break-all;
+}
+
+/* Hint Box Styles for Level 5 */
+.hint-box {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    background: rgba(0, 100, 255, 0.1);
+    border: 2px solid #0088ff;
+    border-radius: 8px;
+    padding: 1rem 1.5rem;
+    margin: 1.5rem 0;
+    box-shadow: 0 0 15px rgba(0, 136, 255, 0.2);
+}
+
+.hint-icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.hint-content {
+    color: #ccddff;
+    font-size: 1rem;
+    line-height: 1.6;
+    flex: 1;
+}

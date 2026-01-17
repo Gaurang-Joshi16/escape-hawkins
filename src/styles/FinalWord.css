@@ -1,0 +1,102 @@
+/* Final Word Page Styles */
+@import './Round1Dashboard.css';
+
+/* Message Styles */
+.final-word-message {
+    margin: 2rem auto;
+    max-width: 600px;
+    padding: 1.5rem;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.final-word-message.success {
+    background: rgba(0, 255, 136, 0.1);
+    border: 2px solid #00ff88;
+    color: #00ff88;
+}
+
+.final-word-message.error {
+    background: rgba(255, 0, 0, 0.1);
+    border: 2px solid #ff0000;
+    color: #ff6666;
+}
+
+.final-word-message.warning {
+    background: rgba(255, 217, 102, 0.1);
+    border: 2px solid #ffd966;
+    color: #ffd966;
+}
+
+.message-icon {
+    font-size: 2rem;
+    flex-shrink: 0;
+}
+
+.message-text {
+    font-size: 1.1rem;
+    font-weight: 500;
+    flex: 1;
+}
+
+/* Locked Message */
+.final-word-locked-message {
+    margin: 2rem auto;
+    max-width: 600px;
+    padding: 1.5rem;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    text-align: center;
+}
+
+.final-word-locked-message p {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+}
+
+/* Summary Stats Update */
+.summary-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.summary-stat {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+}
+
+.summary-stat-label {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.summary-stat-value {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #00ff88;
+}

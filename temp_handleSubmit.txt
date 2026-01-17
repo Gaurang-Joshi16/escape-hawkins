@@ -1,0 +1,85 @@
+    // Handle form submission
+    const handleSubmit = async (isTimeout = false) => {
+        // Validate all questions are answered (skip validation on timeout)
+        if (!isTimeout) {
+            const allAnswered = level4Questions.every(q => answers[q.id]);
+            
+            if (!allAnswered) {
+                alert('Please answer all questions before submitting.');
+                return;
+            }
+        }
+
+        setIsSubmitting(true);
+
+        try {
+            // Evaluate all answers
+            let correct = 0;
+            let score = 0;
+
+            level4Questions.forEach(question => {
+                const userAnswer = answers[question.id];
+                const isCorrect = userAnswer === question.correctAnswer;
+                
+                if (isCorrect) {
+                    correct++;
+                    score += question.points;
+                }
+            });
+
+            setCorrectCount(correct);
+            setTotalScore(score);
+
+            // Get level config
+            const levelConfig = getLevelConfig(4);
+            const threshold = levelConfig?.threshold || 3;
+
+            // Determine if hint unlocked (cleared) - need ≥3 correct
+            const cleared = correct >= threshold;
+            setHintUnlocked(cleared);
+
+            // Get letter to unlock
+            const lettersUnlocked = cleared && levelConfig?.letterToUnlock
+                ? [levelConfig.letterToUnlock]
+                : [];
+
+            // Get time taken from timer
+            const finalTimeTaken = timerResultRef.current?.timeTaken || 0;
+            setTimeTaken(finalTimeTaken);
+
+            // Submit to database
+            const dbResult = await submitLevelCompletion(
+                4, // level
+                score,
+                finalTimeTaken, // Time taken in seconds
+                cleared,
+                lettersUnlocked
+            );
+
+            if (!dbResult.success) {
+                console.error('Failed to submit level completion:', dbResult.error);
+                // Continue anyway - don't block user
+            }
+
+            // Update game context state
+            recordLevelAttempt(4, cleared, score);
+
+            // Show completion message
+            setIsComplete(true);
+            setShowCompletionMessage(true);
+
+            // Navigate back to dashboard after 3 seconds
+            setTimeout(() => {
+                navigate('/round1', { replace: true });
+            }, 3000);
+
+        } catch (error) {
+            console.error('Error processing level completion:', error);
+            // Navigate back anyway
+            setTimeout(() => {
+                navigate('/round1', { replace: true });
+            }, 2000);
+        } finally {
+            setIsSubmitting(false);
+        }
+    };
