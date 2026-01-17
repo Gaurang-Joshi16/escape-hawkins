@@ -27,6 +27,23 @@ const Login = () => {
         }
     }, [loading, isAuthenticated, navigate]);
 
+    // Block back button from Login page - redirect to Home
+    useEffect(() => {
+        const handlePopState = () => {
+            if (!isAuthenticated) {
+                // Prevent going back to protected pages after logout
+                navigate('/', { replace: true });
+            }
+        };
+
+        window.addEventListener('popstate', handlePopState);
+
+        return () => {
+            window.removeEventListener('popstate', handlePopState);
+        };
+    }, [isAuthenticated, navigate]);
+
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();

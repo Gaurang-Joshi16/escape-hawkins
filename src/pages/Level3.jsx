@@ -23,8 +23,15 @@ import '../styles/Level.css';
 
 const Level3 = () => {
     const navigate = useNavigate();
-    const { teamId } = useAuth();
-    const { recordLevelAttempt, getLevelStatus } = useGame();
+    const { teamId, isAuthenticated } = useAuth();
+    const { recordLevelAttempt, getLevelStatus, loading: gameLoading } = useGame();
+
+    // Auth protection
+    useEffect(() => {
+        if (!gameLoading && !isAuthenticated) {
+            navigate('/login', { replace: true });
+        }
+    }, [gameLoading, isAuthenticated, navigate]);
 
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(() => {
         // Load saved progress from sessionStorage

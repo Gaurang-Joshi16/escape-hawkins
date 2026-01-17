@@ -23,12 +23,19 @@ const CORRECT_WORD = 'ELEVEN';
 
 const FinalWord = () => {
     const navigate = useNavigate();
-    const { teamId } = useAuth();
+    const { teamId, isAuthenticated } = useAuth();
     const {
         isFinalWordUnlocked = false,
         unlockedLetters = [],
         FINAL_WORD_CONFIG = { hint: 'Use the letters you collected to form the final word.' }
     } = useGame() || {};
+
+    // Auth protection
+    useEffect(() => {
+        if (!isAuthenticated) {
+            navigate('/login', { replace: true });
+        }
+    }, [isAuthenticated, navigate]);
 
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [message, setMessage] = useState(null);

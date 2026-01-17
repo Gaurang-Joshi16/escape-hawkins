@@ -13,9 +13,16 @@ import '../styles/Leaderboard.css';
 
 const Leaderboard = () => {
     const navigate = useNavigate();
-    const { teamId } = useAuth();
+    const { teamId, isAuthenticated } = useAuth();
     const [leaderboard, setLeaderboard] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+
+    // Auth protection
+    useEffect(() => {
+        if (!isAuthenticated) {
+            navigate('/login', { replace: true });
+        }
+    }, [isAuthenticated, navigate]);
 
     useEffect(() => {
         const loadLeaderboard = async () => {
