@@ -141,8 +141,8 @@ const Level4 = () => {
             setHintUnlocked(cleared);
 
             // Get letter to unlock
-            const lettersUnlocked = cleared && levelConfig?.letterToUnlock
-                ? [levelConfig.letterToUnlock]
+            const lettersUnlocked = cleared && levelConfig?.lettersToUnlock
+                ? levelConfig.lettersToUnlock
                 : [];
 
             // Submit to database

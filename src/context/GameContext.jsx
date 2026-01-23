@@ -156,10 +156,10 @@ export const GameProvider = ({ children }) => {
             // Remove from failed if previously failed
             setFailedLevels(prev => prev.filter(id => id !== levelId));
 
-            // Unlock letter for this level (singular)
+            // Unlock letters for this level (now supports multiple letters)
             const levelConfig = LEVELS_ARRAY.find(l => l.id === levelId);
-            if (levelConfig && levelConfig.letterToUnlock) {
-                setCollectedLetters(prev => [...new Set([...prev, levelConfig.letterToUnlock])]);
+            if (levelConfig && levelConfig.lettersToUnlock) {
+                setCollectedLetters(prev => [...new Set([...prev, ...levelConfig.lettersToUnlock])]);
             }
         } else {
             setFailedLevels(prev => [...new Set([...prev, levelId])]);

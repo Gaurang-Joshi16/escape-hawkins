@@ -114,7 +114,7 @@ const FinalWordInput = ({
                         </form>
 
                         <div className="final-word-hint">
-                            💡 Hint: Think about who has the powers
+                            💡 Hint: Think about the ultimate threat from the Upside Down
                         </div>
                     </>
                 )}

@@ -13,13 +13,13 @@ import '../styles/FinalWord.css';
  * Features:
  * - Unlocks only after all 5 levels cleared
  * - 2 attempts maximum
- * - Validates final word (ELEVEN)
+ * - Validates final word (MINDFLAYER)
  * - Persists state in Supabase
  * - Shows in-page feedback
  * - ALWAYS renders (never returns null)
  */
 
-const CORRECT_WORD = 'ELEVEN';
+const CORRECT_WORD = 'MINDFLAYER';
 
 const FinalWord = () => {
     const navigate = useNavigate();

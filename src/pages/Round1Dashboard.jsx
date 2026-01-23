@@ -150,11 +150,12 @@ const Round1Dashboard = () => {
         // Build a map of which positions are unlocked based on cleared levels
         const unlockedPositions = new Set();
 
-        // For each cleared level, mark its slot position as unlocked
+        // For each cleared level, mark its slot positions as unlocked
         clearedLevels.forEach(levelId => {
             const levelConfig = levelsConfig.find(l => l.id === levelId);
-            if (levelConfig && levelConfig.slotPosition !== undefined) {
-                unlockedPositions.add(levelConfig.slotPosition);
+            if (levelConfig && levelConfig.slotPositions) {
+                // Add all positions from the slotPositions array
+                levelConfig.slotPositions.forEach(pos => unlockedPositions.add(pos));
             }
         });
 

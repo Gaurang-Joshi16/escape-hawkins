@@ -16,8 +16,8 @@ export const LEVELS_CONFIG = {
         name: 'Level 1: MCQs',
         description: 'Multiple choice questions',
         type: 'MCQ',
-        letterToUnlock: 'E', // Exactly one letter
-        slotPosition: 0, // Position in final word (ELEVEN)
+        lettersToUnlock: ['M', 'L'], // Two letters unlocked
+        slotPositions: [0, 6], // Positions in MINDFLAYER
         threshold: 3, // Min correct to clear
         totalQuestions: 5,
         unlockCondition: null // Always accessible
@@ -27,8 +27,8 @@ export const LEVELS_CONFIG = {
         name: 'Level 2: Debugging',
         description: 'Fix the code bugs',
         type: 'TEXT_INPUT',
-        letterToUnlock: 'L', // Exactly one letter
-        slotPosition: 1, // Position in final word
+        lettersToUnlock: ['N', 'F'], // Two letters unlocked
+        slotPositions: [3, 5], // Positions in MINDFLAYER
         threshold: 2, // Both must be correct
         totalQuestions: 2,
         unlockCondition: 'Complete Level 1' // Can attempt after L1 (pass or fail)
@@ -38,8 +38,8 @@ export const LEVELS_CONFIG = {
         name: 'Level 3: Riddle',
         description: 'Solve the riddle character by character',
         type: 'CHARACTER_LOCK',
-        letterToUnlock: 'E', // Exactly one letter (second E)
-        slotPosition: 2, // Position in final word
+        lettersToUnlock: ['D', 'A'], // Two letters unlocked
+        slotPositions: [4, 8], // Positions in MINDFLAYER
         threshold: 2, // Need ≥2 correct for hint unlock
         totalQuestions: 3,
         unlockCondition: 'Complete Level 2'
@@ -49,8 +49,8 @@ export const LEVELS_CONFIG = {
         name: 'Level 4: Scenarios',
         description: 'Scenario-based questions',
         type: 'SCENARIO_MCQ',
-        letterToUnlock: 'V', // Exactly one letter
-        slotPosition: 3, // Position in final word
+        lettersToUnlock: ['I', 'Y'], // Two letters unlocked
+        slotPositions: [1, 7], // Positions in MINDFLAYER
         threshold: 3, // 3 out of 4 questions
         totalQuestions: 4,
         unlockCondition: 'Complete Level 3'
@@ -60,8 +60,8 @@ export const LEVELS_CONFIG = {
         name: 'Level 5: Cipher',
         description: 'Decode the encrypted message',
         type: 'CIPHER_MCQ',
-        letterToUnlock: 'N', // Exactly one letter
-        slotPosition: 5, // Position in final word
+        lettersToUnlock: ['E', 'R'], // Two letters unlocked
+        slotPositions: [2, 9], // Positions in MINDFLAYER
         threshold: 1, // Must get cipher correct
         totalQuestions: 1,
         unlockCondition: 'Complete Level 4'
@@ -73,8 +73,8 @@ export const LEVELS_CONFIG = {
  * Letters revealed progressively as levels are CLEARED (not just attempted)
  */
 export const FINAL_WORD_CONFIG = {
-    word: 'ELEVEN',
-    hint: 'The one with powers',
+    word: 'MINDFLAYER',
+    hint: 'The ultimate threat from the Upside Down',
     description: 'Use the letters you\'ve unlocked to form the final word'
 };
 
