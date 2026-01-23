@@ -263,21 +263,21 @@ const Round1Dashboard = () => {
                 <ScoreDisplay />
             </div>
 
-            {/* View Leaderboard button - visible after Level 1 completion */}
-            {(getLevelStatus(1) === 'cleared' || getLevelStatus(1) === 'failed') && (
-                <div style={{ textAlign: 'center', margin: '2rem 0' }}>
-                    <button
-                        className="dashboard-logout"
-                        onClick={() => navigate('/leaderboard')}
-                        style={{
-                            background: 'linear-gradient(135deg, #ff0033, #cc0029)',
-                            border: 'none'
-                        }}
-                    >
-                        VIEW LEADERBOARD
-                    </button>
-                </div>
-            )}
+
+            {/* View Leaderboard button - always visible, data-driven from database */}
+            <div style={{ textAlign: 'center', margin: '2rem 0' }}>
+                <button
+                    className="dashboard-logout"
+                    onClick={() => navigate('/leaderboard')}
+                    style={{
+                        background: 'linear-gradient(135deg, #ff0033, #cc0029)',
+                        border: 'none'
+                    }}
+                >
+                    VIEW LEADERBOARD
+                </button>
+            </div>
+
 
             <div>
                 <h2 className="dashboard-section-title">Levels</h2>
